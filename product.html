@@ -1,34 +1,40 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <a href="practical.html"><h2>Admin Page</h2></a>
     <div class="container">
         <div class="row">
-            <div class="card" id="card"></div>
+            <div class="carddata" id="carddata"></div>
         </div>
     </div>
 
 
 <script>
-    let product  = JSON.parse(localStorage.getItem(product)) || [];
-    console.log(product);
+    let product = JSON.parse(localStorage.getItem("product"));
+        console.log(product);
 
-    let loaddata = ()=>{
-        let card = document.getElementById("card")
-        product.map((val, ind)=>{
-            let div = document.getElementById("div")
-            div.innerHTML = `<div class="card-body"></div>
-            <h5 clas="card-title">${val.name}</h5>
+        let adddata = ()=>{
+            let carddata = document.getElementById("carddata");
+            product.map((val,ind)=>{
+                let card = document.createElement("card");
+            card.innerHTML= `<div class="main">
+                              <h3>Name : ${val.name}</h3>
+                              <h4 class="">Price: ${val.price}</h4>
+                              <p class="fs-5">Selling : ${val.selling}</p>
+                              <p class="fs-5">Discount : ${val.discount}</p>
+                              <p class="fs-5">Rating : ${val.rating}</p>
+                </div> ` 
+            carddata.appendChild(card)
 
-                                
-            `
-        })
-    }
+            })
+        }
+        adddata()
 </script>
 
 </body>
